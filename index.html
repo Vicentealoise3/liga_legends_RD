@@ -3,85 +3,97 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bracket Liga LEGENDS</title>
+<title>Bracket Liga LEGENDS - MLB The Show 25 Style</title>
 <style>
   body{
     margin:0;
     font-family:Arial,Helvetica,sans-serif;
-    background:#0c1220;
+    background:#002D72; /* azul MLB */
     color:#fff;
   }
-  h1{text-align:center;padding:12px;color:#4cc9f0;font-size:1.2rem}
+  h1{
+    text-align:center;
+    padding:14px;
+    color:#D50032; /* rojo MLB */
+    font-size:1.3rem;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
 
   .bracket{
     display:flex;
-    gap:20px;
-    padding:10px;
-    overflow-x:auto;
-    justify-content:center;
-  }
-  .round{
-    display:flex;
     flex-direction:column;
-    gap:20px;
-    min-width:150px;
-    flex-shrink:0;
+    gap:18px;
+    padding:12px;
+    max-width:420px;
+    margin:auto;
   }
-  .round h2{
+
+  .match{
+    background:#0a163f;
+    border:2px solid #D50032; /* rojo */
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+    padding:10px;
+  }
+
+  .header{
+    font-weight:bold;
+    font-size:.9rem;
+    margin-bottom:6px;
+    text-align:center;
+    color:#FFFFFF; /* blanco */
+  }
+
+  .team{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:6px;
+    border-radius:8px;
+    margin:4px 0;
+    background:#001a40;
+    border:1px solid #D50032;
+    font-size:.9rem;
+  }
+  .team.win{background:#14532d;color:#aef2da;border-color:#27e1a0}
+  .team.lose{background:#432121;color:#f5a9a9;border-color:#ff6b6b}
+
+  .games{
+    margin-top:6px;
+  }
+  .game-row{
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    margin:4px 0;
+    font-size:.8rem;
+    gap:6px;
+  }
+  .games input{
+    width:50px;
+    text-align:center;
+    padding:4px;
+    border:none;
+    border-radius:6px;
+    background:#fff;
+    color:#002D72;
+    font-weight:bold;
+    font-size:.85rem;
+  }
+  .note{
+    color:#27e1a0;
+    font-weight:bold;
+    font-size:.8rem;
+  }
+
+  .winner-label{
+    margin-top:6px;
     text-align:center;
     font-size:.85rem;
-    color:#27e1a0;
-    margin-bottom:4px;
-  }
-  .match{
-    background:#162447;
-    border:1px solid #2b3b66;
-    border-radius:8px;
-    box-shadow:0 3px 8px rgba(0,0,0,0.3);
-    padding:6px;
-    text-align:center;
-  }
-  table{
-    border-collapse:collapse;
-    width:100%;
-    background:#101820;
-    color:#fff;
     font-weight:bold;
+    color:#D50032;
   }
-  td,th{
-    border:1px solid #444;
-    padding:2px 4px;
-    text-align:center;
-    font-size:.75rem;
-  }
-  th{background:#1f4068;color:#27e1a0;font-size:.7rem}
-  tr.team td:first-child{
-    background:#1b263b;
-    text-align:left;
-    font-size:.75rem;
-  }
-  .scores input{
-    width:25px;
-    text-align:center;
-    padding:2px;
-    border:none;
-    background:#0a1330;
-    color:#fff;
-    border-radius:4px;
-    font-size:.7rem;
-  }
-  .next{
-    margin-top:4px;
-    padding:4px 6px;
-    background:#1f4068;
-    border-radius:6px;
-    font-size:.75rem;
-    font-weight:bold;
-    color:#27e1a0;
-    border:1px solid #27e1a0;
-  }
-  .win{background:#14532d !important;color:#27e1a0}
-  .lose{background:#432121 !important;color:#f5a9a9}
 </style>
 </head>
 <body>
@@ -89,123 +101,134 @@
 
 <div class="bracket">
   <!-- Cuartos -->
-  <div class="round">
-    <h2>Cuartos</h2>
-    <div class="match" data-id="QF1" data-next="SF1">
-      <table>
-        <tr><th></th><th>J1</th><th>J2</th><th>J3</th></tr>
-        <tr class="team"><td>MIL</td><td><input></td><td><input></td><td><input></td></tr>
-        <tr class="team"><td>NYM</td><td><input></td><td><input></td><td><input></td></tr>
-      </table>
-      <div class="next">Ganador</div>
+  <div class="match" data-id="QF1">
+    <div class="header">Cuartos - Serie 1</div>
+    <div class="team">Brewers</div>
+    <div class="team">Mets</div>
+    <div class="games">
+      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
     </div>
-    <div class="match" data-id="QF2" data-next="SF1">
-      <table>
-        <tr><th></th><th>J1</th><th>J2</th><th>J3</th></tr>
-        <tr class="team"><td>DET</td><td><input></td><td><input></td><td><input></td></tr>
-        <tr class="team"><td>LAD</td><td><input></td><td><input></td><td><input></td></tr>
-      </table>
-      <div class="next">Ganador</div>
+    <div class="winner-label"></div>
+  </div>
+
+  <div class="match" data-id="QF2">
+    <div class="header">Cuartos - Serie 2</div>
+    <div class="team">Tigers</div>
+    <div class="team">Dodgers</div>
+    <div class="games">
+      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
     </div>
-    <div class="match" data-id="QF3" data-next="SF2">
-      <table>
-        <tr><th></th><th>J1</th><th>J2</th><th>J3</th></tr>
-        <tr class="team"><td>TOR</td><td><input></td><td><input></td><td><input></td></tr>
-        <tr class="team"><td>SEA</td><td><input></td><td><input></td><td><input></td></tr>
-      </table>
-      <div class="next">Ganador</div>
+    <div class="winner-label"></div>
+  </div>
+
+  <div class="match" data-id="QF3">
+    <div class="header">Cuartos - Serie 3</div>
+    <div class="team">Blue Jays</div>
+    <div class="team">Mariners</div>
+    <div class="games">
+      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
     </div>
-    <div class="match" data-id="QF4" data-next="SF2">
-      <table>
-        <tr><th></th><th>J1</th><th>J2</th><th>J3</th></tr>
-        <tr class="team"><td>CHC</td><td><input></td><td><input></td><td><input></td></tr>
-        <tr class="team"><td>SDP</td><td><input></td><td><input></td><td><input></td></tr>
-      </table>
-      <div class="next">Ganador</div>
+    <div class="winner-label"></div>
+  </div>
+
+  <div class="match" data-id="QF4">
+    <div class="header">Cuartos - Serie 4</div>
+    <div class="team">Cubs</div>
+    <div class="team">Padres</div>
+    <div class="games">
+      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
     </div>
+    <div class="winner-label"></div>
   </div>
 
   <!-- Semifinales -->
-  <div class="round">
-    <h2>Semifinales</h2>
-    <div class="match" data-id="SF1" data-next="FINAL">
-      <table>
-        <tr><th></th><th>J1</th><th>J2</th><th>J3</th></tr>
-        <tr class="team"><td>GAN QF1</td><td><input></td><td><input></td><td><input></td></tr>
-        <tr class="team"><td>GAN QF2</td><td><input></td><td><input></td><td><input></td></tr>
-      </table>
-      <div class="next">Ganador</div>
+  <div class="match" data-id="SF1">
+    <div class="header">Semifinal - Serie 1</div>
+    <div class="team">Ganador QF1</div>
+    <div class="team">Ganador QF2</div>
+    <div class="games">
+      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
     </div>
-    <div class="match" data-id="SF2" data-next="FINAL">
-      <table>
-        <tr><th></th><th>J1</th><th>J2</th><th>J3</th></tr>
-        <tr class="team"><td>GAN QF3</td><td><input></td><td><input></td><td><input></td></tr>
-        <tr class="team"><td>GAN QF4</td><td><input></td><td><input></td><td><input></td></tr>
-      </table>
-      <div class="next">Ganador</div>
+    <div class="winner-label"></div>
+  </div>
+
+  <div class="match" data-id="SF2">
+    <div class="header">Semifinal - Serie 2</div>
+    <div class="team">Ganador QF3</div>
+    <div class="team">Ganador QF4</div>
+    <div class="games">
+      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
     </div>
+    <div class="winner-label"></div>
   </div>
 
   <!-- Final -->
-  <div class="round">
-    <h2>Final</h2>
-    <div class="match" data-id="FINAL">
-      <table>
-        <tr><th></th><th>J1</th><th>J2</th><th>J3</th></tr>
-        <tr class="team"><td>GAN SF1</td><td><input></td><td><input></td><td><input></td></tr>
-        <tr class="team"><td>GAN SF2</td><td><input></td><td><input></td><td><input></td></tr>
-      </table>
-      <div class="next">Campeón</div>
+  <div class="match" data-id="FINAL">
+    <div class="header">Final</div>
+    <div class="team">Ganador SF1</div>
+    <div class="team">Ganador SF2</div>
+    <div class="games">
+      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
+      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
     </div>
+    <div class="winner-label"></div>
   </div>
 </div>
 
 <script>
 function updateMatch(match){
-  const rows=match.querySelectorAll("tr.team");
+  const teams=match.querySelectorAll(".team");
+  const rows=match.querySelectorAll(".game-row");
   let wins=[0,0];
 
-  rows.forEach(r=>r.classList.remove("win","lose"));
+  teams.forEach(t=>t.classList.remove("win","lose"));
 
-  for(let j=1;j<=3;j++){
-    const r1=parseInt(rows[0].children[j].querySelector("input").value)||0;
-    const r2=parseInt(rows[1].children[j].querySelector("input").value)||0;
-    if(r1>r2) wins[0]++; else if(r2>r1) wins[1]++;
-  }
+  rows.forEach(row=>{
+    const inp=row.querySelector("input");
+    const note=row.querySelector(".note");
+    note.textContent="";
+    if(!inp.value.includes("-")) return;
+    const [a,b]=inp.value.split("-").map(x=>parseInt(x.trim(),10));
+    if(isNaN(a)||isNaN(b)) return;
 
+    if(a>b){
+      wins[0]++;
+      note.textContent="Gana "+teams[0].textContent;
+    }else if(b>a){
+      wins[1]++;
+      note.textContent="Gana "+teams[1].textContent;
+    }
+  });
+
+  const winnerLabel=match.querySelector(".winner-label");
   if(wins[0]>=2){
-    rows[0].classList.add("win");
-    rows[1].classList.add("lose");
-    match.querySelector(".next").textContent=rows[0].children[0].textContent;
-    propagate(match.dataset.id, rows[0].children[0].textContent);
+    teams[0].classList.add("win");
+    teams[1].classList.add("lose");
+    winnerLabel.textContent="Ganador de la serie: "+teams[0].textContent;
   }else if(wins[1]>=2){
-    rows[1].classList.add("win");
-    rows[0].classList.add("lose");
-    match.querySelector(".next").textContent=rows[1].children[0].textContent;
-    propagate(match.dataset.id, rows[1].children[0].textContent);
+    teams[1].classList.add("win");
+    teams[0].classList.add("lose");
+    winnerLabel.textContent="Ganador de la serie: "+teams[1].textContent;
   }else{
-    match.querySelector(".next").textContent="Ganador";
+    winnerLabel.textContent="";
   }
-}
-
-function propagate(matchId, winnerName){
-  const match=document.querySelector(`.match[data-id="${matchId}"]`);
-  if(!match) return;
-  const nextId=match.dataset.next;
-  if(!nextId) return;
-  const nextMatch=document.querySelector(`.match[data-id="${nextId}"]`);
-  if(!nextMatch) return;
-  const rows=nextMatch.querySelectorAll("tr.team");
-  if(matchId==="QF1") rows[0].children[0].textContent=winnerName;
-  if(matchId==="QF2") rows[1].children[0].textContent=winnerName;
-  if(matchId==="QF3") rows[0].children[0].textContent=winnerName;
-  if(matchId==="QF4") rows[1].children[0].textContent=winnerName;
-  if(matchId==="SF1") rows[0].children[0].textContent=winnerName;
-  if(matchId==="SF2") rows[1].children[0].textContent=winnerName;
 }
 
 document.querySelectorAll(".match").forEach(match=>{
-  match.querySelectorAll("input").forEach(inp=>{
+  match.querySelectorAll(".games input").forEach(inp=>{
     inp.addEventListener("input",()=>updateMatch(match));
   });
 });
