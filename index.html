@@ -11,35 +11,34 @@
     background:#0c1220;
     color:#fff;
   }
-  h1{text-align:center;padding:16px;color:#4cc9f0}
+  h1{text-align:center;padding:12px;color:#4cc9f0;font-size:1.2rem}
 
   .bracket{
     display:flex;
-    gap:40px;
-    padding:20px;
+    gap:20px;
+    padding:10px;
     overflow-x:auto;
     justify-content:center;
   }
   .round{
     display:flex;
     flex-direction:column;
-    justify-content:center;
-    gap:40px;
-    min-width:220px;
+    gap:20px;
+    min-width:150px;
     flex-shrink:0;
   }
   .round h2{
     text-align:center;
-    font-size:.95rem;
+    font-size:.85rem;
     color:#27e1a0;
-    margin-bottom:8px;
+    margin-bottom:4px;
   }
   .match{
     background:#162447;
-    border:2px solid #2b3b66;
-    border-radius:10px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.4);
-    padding:10px;
+    border:1px solid #2b3b66;
+    border-radius:8px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.3);
+    padding:6px;
     text-align:center;
   }
   table{
@@ -51,40 +50,38 @@
   }
   td,th{
     border:1px solid #444;
-    padding:4px 6px;
+    padding:2px 4px;
     text-align:center;
-    font-size:.85rem;
+    font-size:.75rem;
   }
-  th{background:#1f4068;color:#27e1a0}
+  th{background:#1f4068;color:#27e1a0;font-size:.7rem}
   tr.team td:first-child{
     background:#1b263b;
     text-align:left;
+    font-size:.75rem;
   }
   .scores input{
-    width:36px;
+    width:25px;
     text-align:center;
-    padding:3px;
+    padding:2px;
     border:none;
     background:#0a1330;
     color:#fff;
-    border-radius:6px;
+    border-radius:4px;
+    font-size:.7rem;
   }
   .next{
-    margin-top:6px;
-    padding:6px 10px;
+    margin-top:4px;
+    padding:4px 6px;
     background:#1f4068;
     border-radius:6px;
-    font-size:.8rem;
+    font-size:.75rem;
     font-weight:bold;
     color:#27e1a0;
-    border:2px solid #27e1a0;
+    border:1px solid #27e1a0;
   }
   .win{background:#14532d !important;color:#27e1a0}
   .lose{background:#432121 !important;color:#f5a9a9}
-  @media(max-width:600px){
-    .round{min-width:180px}
-    .scores input{width:30px}
-  }
 </style>
 </head>
 <body>
@@ -164,27 +161,15 @@
 </div>
 
 <script>
-function parseScore(val){
-  if(!val.includes("-")) return null;
-  const [a,b]=val.split("-").map(x=>parseInt(x.trim(),10));
-  if(isNaN(a)||isNaN(b)) return null;
-  return {a,b};
-}
-
 function updateMatch(match){
   const rows=match.querySelectorAll("tr.team");
-  const inputs=match.querySelectorAll(".scores input");
   let wins=[0,0];
-  let idx=0;
 
-  rows.forEach((row,i)=>{
-    row.classList.remove("win","lose");
-  });
+  rows.forEach(r=>r.classList.remove("win","lose"));
 
-  // recorrer columnas de J1, J2, J3
-  for(let j=0;j<3;j++){
-    const r1=parseInt(rows[0].children[j+1].querySelector("input").value)||0;
-    const r2=parseInt(rows[1].children[j+1].querySelector("input").value)||0;
+  for(let j=1;j<=3;j++){
+    const r1=parseInt(rows[0].children[j].querySelector("input").value)||0;
+    const r2=parseInt(rows[1].children[j].querySelector("input").value)||0;
     if(r1>r2) wins[0]++; else if(r2>r1) wins[1]++;
   }
 
@@ -211,15 +196,12 @@ function propagate(matchId, winnerName){
   const nextMatch=document.querySelector(`.match[data-id="${nextId}"]`);
   if(!nextMatch) return;
   const rows=nextMatch.querySelectorAll("tr.team");
-  if(matchId.startsWith("QF1")||matchId.startsWith("QF2")){
-    rows[0].children[0].textContent=winnerName;
-  }else if(matchId.startsWith("QF3")||matchId.startsWith("QF4")){
-    rows[1].children[0].textContent=winnerName;
-  }else if(matchId.startsWith("SF1")){
-    rows[0].children[0].textContent=winnerName;
-  }else if(matchId.startsWith("SF2")){
-    rows[1].children[0].textContent=winnerName;
-  }
+  if(matchId==="QF1") rows[0].children[0].textContent=winnerName;
+  if(matchId==="QF2") rows[1].children[0].textContent=winnerName;
+  if(matchId==="QF3") rows[0].children[0].textContent=winnerName;
+  if(matchId==="QF4") rows[1].children[0].textContent=winnerName;
+  if(matchId==="SF1") rows[0].children[0].textContent=winnerName;
+  if(matchId==="SF2") rows[1].children[0].textContent=winnerName;
 }
 
 document.querySelectorAll(".match").forEach(match=>{
