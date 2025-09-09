@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bracket Liga LEGENDS</title>
+<style>
+  body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#0c1220;
+    color:#fff;
+  }
+  h1{text-align:center;padding:12px}
+
+  .bracket{
+    display:flex;
+    gap:40px;
+    padding:20px;
+    overflow-x:auto;
+    justify-content:center;
+  }
+  .round{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:40px;
+    min-width:200px;
+    flex-shrink:0;
+  }
+  .round h2{
+    text-align:center;
+    font-size:.9rem;
+    color:#4cc9f0;
+    margin-bottom:8px;
+  }
+  .match{
+    background:#162447;
+    border:1px solid #2b3b66;
+    border-radius:10px;
+    padding:10px;
+    text-align:center;
+    position:relative;
+  }
+  .team{font-weight:bold;margin:3px 0}
+  .games{margin-top:6px}
+  .game{display:flex;justify-content:space-between;margin:2px 0;font-size:.8rem}
+  .game input{
+    width:36px;
+    padding:2px;
+    text-align:center;
+    border-radius:6px;
+    border:1px solid #2d4170;
+    background:#0a1330;
+    color:#fff;
+  }
+
+  /* Líneas de conexión */
+  .connector-right{
+    position:absolute;
+    top:50%;
+    right:-40px;
+    width:40px;
+    height:2px;
+    background:#888;
+  }
+  .connector-right::after{
+    content:"";
+    position:absolute;
+    top:-40px;
+    right:0;
+    width:2px;
+    height:80px;
+    background:#888;
+  }
+
+  /* Ajuste en semifinales */
+  .semi .connector-right{
+    top:50%;
+    height:2px;
+  }
+  .semi .connector-right::after{
+    top:-80px;
+    height:160px;
+  }
+
+  @media(max-width:600px){
+    h1{font-size:1.1rem}
+    .round{min-width:160px}
+    .game input{width:30px}
+  }
+</style>
+</head>
+<body>
+<h1>Postemporada Liga LEGENDS</h1>
+
+<div class="bracket">
+  <!-- Cuartos -->
+  <div class="round">
+    <h2>Cuartos</h2>
+    <div class="match">
+      <div class="team">MIL</div>
+      <div class="team">NYM</div>
+      <div class="games">
+        <div class="game">J1 <input></div>
+        <div class="game">J2 <input></div>
+        <div class="game">J3 <input></div>
+      </div>
+      <div class="connector-right"></div>
+    </div>
+    <div class="match">
+      <div class="team">DET</div>
+      <div class="team">LAD</div>
+      <div class="games">
+        <div class="game">J1 <input></div>
+        <div class="game">J2 <input></div>
+        <div class="game">J3 <input></div>
+      </div>
+      <div class="connector-right"></div>
+    </div>
+    <div class="match">
+      <div class="team">TOR</div>
+      <div class="team">SEA</div>
+      <div class="games">
+        <div class="game">J1 <input></div>
+        <div class="game">J2 <input></div>
+        <div class="game">J3 <input></div>
+      </div>
+      <div class="connector-right"></div>
+    </div>
+    <div class="match">
+      <div class="team">CHC</div>
+      <div class="team">SDP</div>
+      <div class="games">
+        <div class="game">J1 <input></div>
+        <div class="game">J2 <input></div>
+        <div class="game">J3 <input></div>
+      </div>
+      <div class="connector-right"></div>
+    </div>
+  </div>
+
+  <!-- Semifinales -->
+  <div class="round">
+    <h2>Semifinales</h2>
+    <div class="match semi">
+      <div class="team">GAN QF1</div>
+      <div class="team">GAN QF2</div>
+      <div class="games">
+        <div class="game">J1 <input></div>
+        <div class="game">J2 <input></div>
+        <div class="game">J3 <input></div>
+      </div>
+      <div class="connector-right"></div>
+    </div>
+    <div class="match semi">
+      <div class="team">GAN QF3</div>
+      <div class="team">GAN QF4</div>
+      <div class="games">
+        <div class="game">J1 <input></div>
+        <div class="game">J2 <input></div>
+        <div class="game">J3 <input></div>
+      </div>
+      <div class="connector-right"></div>
+    </div>
+  </div>
+
+  <!-- Final -->
+  <div class="round">
+    <h2>Final</h2>
+    <div class="match">
+      <div class="team">GAN SF1</div>
+      <div class="team">GAN SF2</div>
+      <div class="games">
+        <div class="game">J1 <input></div>
+        <div class="game">J2 <input></div>
+        <div class="game">J3 <input></div>
+      </div>
+      <div class="connector-right"></div>
+    </div>
+  </div>
+
+  <!-- World Series -->
+  <div class="round">
+    <h2>World Series</h2>
+    <div class="match">
+      <div class="team">GAN FINAL</div>
+      <div class="team">—</div>
+      <div class="games">
+        <div class="game">J1 <input></div>
+        <div class="game">J2 <input></div>
+        <div class="game">J3 <input></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
