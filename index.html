@@ -3,235 +3,77 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bracket Liga LEGENDS - MLB The Show 25 Style</title>
+<title>Bracket Liga LEGENDS</title>
 <style>
-  body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#002D72; /* azul MLB */
-    color:#fff;
-  }
-  h1{
-    text-align:center;
-    padding:14px;
-    color:#D50032; /* rojo MLB */
-    font-size:1.3rem;
-    text-transform:uppercase;
-    letter-spacing:1px;
-  }
-
-  .bracket{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    padding:12px;
-    max-width:420px;
-    margin:auto;
-  }
-
-  .match{
-    background:#0a163f;
-    border:2px solid #D50032; /* rojo */
-    border-radius:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.4);
-    padding:10px;
-  }
-
-  .header{
-    font-weight:bold;
-    font-size:.9rem;
-    margin-bottom:6px;
-    text-align:center;
-    color:#FFFFFF; /* blanco */
-  }
-
-  .team{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:6px;
-    border-radius:8px;
-    margin:4px 0;
-    background:#001a40;
-    border:1px solid #D50032;
-    font-size:.9rem;
-  }
-  .team.win{background:#14532d;color:#aef2da;border-color:#27e1a0}
-  .team.lose{background:#432121;color:#f5a9a9;border-color:#ff6b6b}
-
-  .games{
-    margin-top:6px;
-  }
-  .game-row{
-    display:flex;
-    justify-content:flex-start;
-    align-items:center;
-    margin:4px 0;
-    font-size:.8rem;
-    gap:6px;
-  }
-  .games input{
-    width:50px;
-    text-align:center;
-    padding:4px;
-    border:none;
-    border-radius:6px;
-    background:#fff;
-    color:#002D72;
-    font-weight:bold;
-    font-size:.85rem;
-  }
-  .note{
-    color:#27e1a0;
-    font-weight:bold;
-    font-size:.8rem;
-  }
-
-  .winner-label{
-    margin-top:6px;
-    text-align:center;
-    font-size:.85rem;
-    font-weight:bold;
-    color:#D50032;
-  }
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#002D72;color:#fff;}
+  h1{text-align:center;padding:14px;color:#D50032;font-size:1.3rem;text-transform:uppercase;}
+  .bracket{display:flex;flex-direction:column;gap:18px;padding:12px;max-width:420px;margin:auto;}
+  .match{background:#0a163f;border:2px solid #D50032;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.4);padding:10px;}
+  .header{font-weight:bold;font-size:.9rem;margin-bottom:6px;text-align:center;color:#fff;}
+  .team{padding:6px;margin:4px 0;background:#001a40;border:1px solid #D50032;border-radius:8px;}
+  .team.win{background:#14532d;color:#aef2da;border-color:#27e1a0;}
+  .team.lose{background:#432121;color:#f5a9a9;border-color:#ff6b6b;}
+  .games{margin-top:6px;}
+  .game-row{margin:3px 0;font-size:.85rem;}
+  .note{color:#27e1a0;font-weight:bold;font-size:.8rem;margin-left:6px;}
+  .winner-label{margin-top:6px;text-align:center;font-size:.85rem;font-weight:bold;color:#D50032;}
 </style>
 </head>
 <body>
 <h1>Postemporada Liga LEGENDS</h1>
 
-<div class="bracket">
-  <!-- Cuartos -->
-  <div class="match" data-id="QF1">
-    <div class="header">Cuartos - Serie 1</div>
-    <div class="team">Brewers</div>
-    <div class="team">Mets</div>
-    <div class="games">
-      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
-    </div>
-    <div class="winner-label"></div>
-  </div>
-
-  <div class="match" data-id="QF2">
-    <div class="header">Cuartos - Serie 2</div>
-    <div class="team">Tigers</div>
-    <div class="team">Dodgers</div>
-    <div class="games">
-      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
-    </div>
-    <div class="winner-label"></div>
-  </div>
-
-  <div class="match" data-id="QF3">
-    <div class="header">Cuartos - Serie 3</div>
-    <div class="team">Blue Jays</div>
-    <div class="team">Mariners</div>
-    <div class="games">
-      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
-    </div>
-    <div class="winner-label"></div>
-  </div>
-
-  <div class="match" data-id="QF4">
-    <div class="header">Cuartos - Serie 4</div>
-    <div class="team">Cubs</div>
-    <div class="team">Padres</div>
-    <div class="games">
-      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
-    </div>
-    <div class="winner-label"></div>
-  </div>
-
-  <!-- Semifinales -->
-  <div class="match" data-id="SF1">
-    <div class="header">Semifinal - Serie 1</div>
-    <div class="team">Ganador QF1</div>
-    <div class="team">Ganador QF2</div>
-    <div class="games">
-      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
-    </div>
-    <div class="winner-label"></div>
-  </div>
-
-  <div class="match" data-id="SF2">
-    <div class="header">Semifinal - Serie 2</div>
-    <div class="team">Ganador QF3</div>
-    <div class="team">Ganador QF4</div>
-    <div class="games">
-      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
-    </div>
-    <div class="winner-label"></div>
-  </div>
-
-  <!-- Final -->
-  <div class="match" data-id="FINAL">
-    <div class="header">Final</div>
-    <div class="team">Ganador SF1</div>
-    <div class="team">Ganador SF2</div>
-    <div class="games">
-      <div class="game-row"><input placeholder="J1"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J2"><span class="note"></span></div>
-      <div class="game-row"><input placeholder="J3"><span class="note"></span></div>
-    </div>
-    <div class="winner-label"></div>
-  </div>
-</div>
+<div class="bracket" id="bracket"></div>
 
 <script>
-function updateMatch(match){
-  const teams=match.querySelectorAll(".team");
-  const rows=match.querySelectorAll(".game-row");
+// 👇 Aquí editas tú manualmente los resultados
+const resultados = {
+  "Cuartos - Serie 1": {equipos:["Brewers","Mets"], juegos:["3-2","1-4","5-0"]},
+  "Cuartos - Serie 2": {equipos:["Tigers","Dodgers"], juegos:["","",""]},
+  "Cuartos - Serie 3": {equipos:["Blue Jays","Mariners"], juegos:["","",""]},
+  "Cuartos - Serie 4": {equipos:["Cubs","Padres"], juegos:["","",""]},
+  "Semifinal - Serie 1": {equipos:["Ganador QF1","Ganador QF2"], juegos:["","",""]},
+  "Semifinal - Serie 2": {equipos:["Ganador QF3","Ganador QF4"], juegos:["","",""]},
+  "Final": {equipos:["Ganador SF1","Ganador SF2"], juegos:["","",""]}
+};
+
+// ---- Lógica de renderizado (solo lectura) ----
+function renderMatch(titulo,data){
   let wins=[0,0];
-
-  teams.forEach(t=>t.classList.remove("win","lose"));
-
-  rows.forEach(row=>{
-    const inp=row.querySelector("input");
-    const note=row.querySelector(".note");
-    note.textContent="";
-    if(!inp.value.includes("-")) return;
-    const [a,b]=inp.value.split("-").map(x=>parseInt(x.trim(),10));
-    if(isNaN(a)||isNaN(b)) return;
-
-    if(a>b){
-      wins[0]++;
-      note.textContent="Gana "+teams[0].textContent;
-    }else if(b>a){
-      wins[1]++;
-      note.textContent="Gana "+teams[1].textContent;
+  let rows="";
+  data.juegos.forEach((score,i)=>{
+    if(!score) return rows+=`<div class="game-row">Juego ${i+1}: -</div>`;
+    const [a,b]=score.split("-").map(x=>parseInt(x,10));
+    let note="";
+    if(!isNaN(a) && !isNaN(b)){
+      if(a>b){wins[0]++; note=`<span class="note">Gana ${data.equipos[0]}</span>`;}
+      else if(b>a){wins[1]++; note=`<span class="note">Gana ${data.equipos[1]}</span>`;}
     }
+    rows+=`<div class="game-row">Juego ${i+1}: ${score} ${note}</div>`;
   });
 
-  const winnerLabel=match.querySelector(".winner-label");
-  if(wins[0]>=2){
-    teams[0].classList.add("win");
-    teams[1].classList.add("lose");
-    winnerLabel.textContent="Ganador de la serie: "+teams[0].textContent;
-  }else if(wins[1]>=2){
-    teams[1].classList.add("win");
-    teams[0].classList.add("lose");
-    winnerLabel.textContent="Ganador de la serie: "+teams[1].textContent;
-  }else{
-    winnerLabel.textContent="";
-  }
+  let winner="";
+  if(wins[0]>=2) winner=data.equipos[0];
+  else if(wins[1]>=2) winner=data.equipos[1];
+
+  return `
+    <div class="match">
+      <div class="header">${titulo}</div>
+      <div class="team ${winner===data.equipos[0]?"win":(winner? "lose":"")}">${data.equipos[0]}</div>
+      <div class="team ${winner===data.equipos[1]?"win":(winner? "lose":"")}">${data.equipos[1]}</div>
+      <div class="games">${rows}</div>
+      <div class="winner-label">${winner? "Ganador de la serie: "+winner:""}</div>
+    </div>
+  `;
 }
 
-document.querySelectorAll(".match").forEach(match=>{
-  match.querySelectorAll(".games input").forEach(inp=>{
-    inp.addEventListener("input",()=>updateMatch(match));
+function render(){
+  const bracket=document.getElementById("bracket");
+  bracket.innerHTML="";
+  Object.keys(resultados).forEach(titulo=>{
+    bracket.innerHTML+=renderMatch(titulo,resultados[titulo]);
   });
-});
+}
+render();
 </script>
 </body>
 </html>
