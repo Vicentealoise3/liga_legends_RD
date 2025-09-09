@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bracket Liga LEGENDS - Horizontal</title>
+<style>
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#002D72;color:#fff;}
+  h1{text-align:center;padding:14px;color:#D50032;font-size:1.3rem;text-transform:uppercase;}
+  .bracket{display:flex;gap:30px;padding:20px;overflow-x:auto;justify-content:center;min-height:100vh;}
+  .round{display:flex;flex-direction:column;gap:40px;min-width:220px;flex-shrink:0;}
+  .round h2{text-align:center;color:#FFD700;font-size:.9rem;margin-bottom:10px;}
+  .match{background:#0a163f;border:2px solid #1E90FF;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.4);padding:10px;text-align:center;position:relative;}
+  .semifinal{border-color:#D50032;}
+  .final{border-color:#FFD700;}
+  .team{margin:4px 0;padding:6px;border-radius:6px;background:#001a40;border:1px solid #D50032;}
+  .team.win{background:#14532d;color:#aef2da;border-color:#27e1a0;}
+  .team.lose{background:#432121;color:#f5a9a9;border-color:#ff6b6b;}
+  .games{margin-top:6px;font-size:.8rem;}
+  .game-row{margin:3px 0;}
+  .note{color:#27e1a0;font-weight:bold;margin-left:6px;}
+  .winner-label{margin-top:6px;font-weight:bold;color:#D50032;font-size:.85rem;}
+  .final .winner-label{color:#FFD700;}
+  .campeon{border:2px solid #FFD700 !important;background:#FFD700 !important;color:#002D72 !important;font-weight:bold;}
+</style>
+</head>
+<body>
+<h1>Postemporada Liga LEGENDS</h1>
+
+<div class="bracket" id="bracket">
+  <div class="round" id="cuartos"><h2>CUARTOS</h2></div>
+  <div class="round" id="semifinales"><h2>SEMIFINALES</h2></div>
+  <div class="round" id="final"><h2>FINAL</h2></div>
+</div>
+
+<script>
+// 👇 Edita los resultados aquí
+const resultados = {
+  "Cuartos - Serie 1": {equipos:["Brewers","Mets"], juegos:["3-2","1-4","5-0"], ronda:"cuartos"},
+  "Cuartos - Serie 2": {equipos:["Tigers","Dodgers"], juegos:["","",""], ronda:"cuartos"},
+  "Cuartos - Serie 3": {equipos:["Blue Jays","Mariners"], juegos:["","",""], ronda:"cuartos"},
+  "Cuartos - Serie 4": {equipos:["Cubs","Padres"], juegos:["","",""], ronda:"cuartos"},
+  "Semifinal - Serie 1": {equipos:["Ganador QF1","Ganador QF2"], juegos:["","",""], ronda:"semifinal"},
+  "Semifinal - Serie 2": {equipos:["Ganador QF3","Ganador QF4"], juegos:["","",""], ronda:"semifinal"},
+  "Final": {equipos:["Ganador SF1","Ganador SF2"], juegos:["","",""], ronda:"final"}
+};
+
+function renderMatch(titulo,data){
+  let wins=[0,0]; let rows="";
+  data.juegos.forEach((score,i)=>{
+    if(!score) return rows+=`<div class="game-row">Juego ${i+1}: -</div>`;
+    const [a,b]=score.split("-").map(x=>parseInt(x,10));
+    let note="";
+    if(!isNaN(a)&&!isNaN(b)){
+      if(a>b){wins[0]++; note=`<span class="note">Gana ${data.equipos[0]}</span>`;}
+      else if(b>a){wins[1]++; note=`<span class="note">Gana ${data.equipos[1]}</span>`;}
+    }
+    rows+=`<div class="game-row">Juego ${i+1}: ${score} ${note}</div>`;
+  });
+  let winner="";
+  if(wins[0]>=2) winner=data.equipos[0];
+  else if(wins[1]>=2) winner=data.equipos[1];
+  const winnerClass=(data.ronda==="final"&&winner)?"campeon":"";
+  return `
+    <div class="match ${data.ronda}">
+      <div class="header">${titulo}</div>
+      <div class="team ${winner===data.equipos[0]?"win":(winner?"lose":"")} ${winner===data.equipos[0]&&winnerClass}">${data.equipos[0]}</div>
+      <div class="team ${winner===data.equipos[1]?"win":(winner?"lose":"")} ${winner===data.equipos[1]&&winnerClass}">${data.equipos[1]}</div>
+      <div class="games">${rows}</div>
+      <div class="winner-label">${winner? (data.ronda==="final"?"🏆 Campeón: "+winner:"Ganador: "+winner):""}</div>
+    </div>
+  `;
+}
+
+function render(){
+  for(const [titulo,data] of Object.entries(resultados)){
+    document.getElementById(data.ronda+(data.ronda==="semifinal"?"es":"")).innerHTML+=renderMatch(titulo,data);
+  }
+}
+render();
+</script>
+</body>
+</html>

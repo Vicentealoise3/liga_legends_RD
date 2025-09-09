@@ -3,78 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bracket Liga LEGENDS</title>
+<title>Menu Bracket Liga LEGENDS</title>
 <style>
-  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#002D72;color:#fff;}
-  h1{text-align:center;padding:14px;color:#D50032;font-size:1.3rem;text-transform:uppercase;}
-  .bracket{display:flex;flex-direction:column;gap:18px;padding:12px;max-width:420px;margin:auto;}
-  .match{background:#0a163f;border:2px solid #D50032;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.4);padding:10px;}
-  .header{font-weight:bold;font-size:.9rem;margin-bottom:6px;text-align:center;color:#fff;}
-  .team{padding:6px;margin:4px 0;background:#001a40;border:1px solid #D50032;border-radius:8px;}
-  .team.win{background:#14532d;color:#aef2da;border-color:#27e1a0;}
-  .team.lose{background:#432121;color:#f5a9a9;border-color:#ff6b6b;}
-  .games{margin-top:6px;}
-  .game-row{margin:3px 0;font-size:.85rem;}
-  .note{color:#27e1a0;font-weight:bold;font-size:.8rem;margin-left:6px;}
-  .winner-label{margin-top:6px;text-align:center;font-size:.85rem;font-weight:bold;color:#D50032;}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#002D72;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;}
+  h1{color:#D50032;text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;text-align:center;}
+  .menu{display:flex;flex-direction:column;gap:14px;width:80%;max-width:300px;}
+  a{display:block;text-align:center;padding:14px;border-radius:10px;font-weight:bold;text-decoration:none;transition:0.3s;}
+  .vertical{background:#1E90FF;color:#fff;border:2px solid #fff;}
+  .horizontal{background:#D50032;color:#fff;border:2px solid #fff;}
+  a:hover{opacity:0.85;transform:scale(1.05);}
 </style>
 </head>
 <body>
-<h1>Postemporada Liga LEGENDS</h1>
-
-<div class="bracket" id="bracket"></div>
-
-<script>
-// 👇 Aquí editas tú manualmente los resultados
-const resultados = {
-  "Cuartos - Serie 1": {equipos:["Brewers","Mets"], juegos:["","",""]},
-  "Cuartos - Serie 2": {equipos:["Tigers","Dodgers"], juegos:["","",""]},
-  "Cuartos - Serie 3": {equipos:["Blue Jays","Mariners"], juegos:["","",""]},
-  "Cuartos - Serie 4": {equipos:["Cubs","Padres"], juegos:["","",""]},
-  "Semifinal - Serie 1": {equipos:["Ganador QF1","Ganador QF2"], juegos:["","",""]},
-  "Semifinal - Serie 2": {equipos:["Ganador QF3","Ganador QF4"], juegos:["","",""]},
-  "Final": {equipos:["Ganador SF1","Ganador SF2"], juegos:["","",""]}
-};
-
-// ---- Lógica de renderizado (solo lectura) ----
-function renderMatch(titulo,data){
-  let wins=[0,0];
-  let rows="";
-  data.juegos.forEach((score,i)=>{
-    if(!score) return rows+=`<div class="game-row">Juego ${i+1}: -</div>`;
-    const [a,b]=score.split("-").map(x=>parseInt(x,10));
-    let note="";
-    if(!isNaN(a) && !isNaN(b)){
-      if(a>b){wins[0]++; note=`<span class="note">Gana ${data.equipos[0]}</span>`;}
-      else if(b>a){wins[1]++; note=`<span class="note">Gana ${data.equipos[1]}</span>`;}
-    }
-    rows+=`<div class="game-row">Juego ${i+1}: ${score} ${note}</div>`;
-  });
-
-  let winner="";
-  if(wins[0]>=2) winner=data.equipos[0];
-  else if(wins[1]>=2) winner=data.equipos[1];
-
-  return `
-    <div class="match">
-      <div class="header">${titulo}</div>
-      <div class="team ${winner===data.equipos[0]?"win":(winner? "lose":"")}">${data.equipos[0]}</div>
-      <div class="team ${winner===data.equipos[1]?"win":(winner? "lose":"")}">${data.equipos[1]}</div>
-      <div class="games">${rows}</div>
-      <div class="winner-label">${winner? "Ganador de la serie: "+winner:""}</div>
-    </div>
-  `;
-}
-
-function render(){
-  const bracket=document.getElementById("bracket");
-  bracket.innerHTML="";
-  Object.keys(resultados).forEach(titulo=>{
-    bracket.innerHTML+=renderMatch(titulo,resultados[titulo]);
-  });
-}
-render();
-</script>
+  <h1>Postemporada Liga LEGENDS</h1>
+  <div class="menu">
+    <a href="bracket.html" class="vertical">📱 Bracket Vertical (Móvil)</a>
+    <a href="bracket_horizontal.html" class="horizontal">🖥️ Bracket Horizontal (Clásico)</a>
+  </div>
 </body>
 </html>
-
