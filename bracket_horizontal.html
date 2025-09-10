@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bracket Liga LEGENDS - Horizontal</title>
+<title>Bracket Horizontal - Liga LEGENDS</title>
 <style>
   body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#002D72;color:#fff;}
   h1{text-align:center;padding:14px;color:#D50032;font-size:1.3rem;text-transform:uppercase;}
@@ -33,18 +33,8 @@
   <div class="round" id="final"><h2>FINAL</h2></div>
 </div>
 
+<script src="resultados.js"></script>
 <script>
-// 👇 Edita los resultados aquí
-const resultados = {
-  "Cuartos - Serie 1": {equipos:["Brewers","Mets"], juegos:["","",""], ronda:"cuartos"},
-  "Cuartos - Serie 2": {equipos:["Tigers","Dodgers"], juegos:["","",""], ronda:"cuartos"},
-  "Cuartos - Serie 3": {equipos:["Blue Jays","Mariners"], juegos:["","",""], ronda:"cuartos"},
-  "Cuartos - Serie 4": {equipos:["Cubs","Padres"], juegos:["","",""], ronda:"cuartos"},
-  "Semifinal - Serie 1": {equipos:["Ganador QF1","Ganador QF2"], juegos:["","",""], ronda:"semifinal"},
-  "Semifinal - Serie 2": {equipos:["Ganador QF3","Ganador QF4"], juegos:["","",""], ronda:"semifinal"},
-  "Final": {equipos:["Ganador SF1","Ganador SF2"], juegos:["","",""], ronda:"final"}
-};
-
 function renderMatch(titulo,data){
   let wins=[0,0]; let rows="";
   data.juegos.forEach((score,i)=>{
@@ -81,4 +71,3 @@ render();
 </script>
 </body>
 </html>
-

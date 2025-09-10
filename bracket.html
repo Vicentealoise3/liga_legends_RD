@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bracket Liga LEGENDS</title>
+<title>Bracket Vertical - Liga LEGENDS</title>
 <style>
   body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#002D72;color:#fff;}
   h1{text-align:center;padding:14px;color:#D50032;font-size:1.3rem;text-transform:uppercase;}
@@ -18,11 +18,10 @@
   .game-row{margin:3px 0;font-size:.85rem;}
   .note{color:#27e1a0;font-weight:bold;font-size:.8rem;margin-left:6px;}
   .winner-label{margin-top:6px;text-align:center;font-size:.85rem;font-weight:bold;}
-  /* Colores de bordes según ronda */
+  /* Colores bordes */
   .cuartos{background:#0a163f;border:2px solid #1E90FF;}
   .semifinal{background:#1a0f2f;border:2px solid #D50032;}
   .final{background:#332107;border:2px solid #FFD700;}
-  /* Campeón resaltado */
   .campeon{border:2px solid #FFD700 !important;background:#FFD700 !important;color:#002D72 !important;font-weight:bold;}
 </style>
 </head>
@@ -31,48 +30,32 @@
 
 <div class="bracket" id="bracket"></div>
 
+<script src="resultados.js"></script>
 <script>
-// 👇 Aquí editas manualmente los resultados
-const resultados = {
-  "Cuartos - Serie 1": {equipos:["Brewers","Mets"], juegos:["","",""], ronda:"cuartos"},
-  "Cuartos - Serie 2": {equipos:["Tigers","Dodgers"], juegos:["","",""], ronda:"cuartos"},
-  "Cuartos - Serie 3": {equipos:["Blue Jays","Mariners"], juegos:["","",""], ronda:"cuartos"},
-  "Cuartos - Serie 4": {equipos:["Cubs","Padres"], juegos:["","",""], ronda:"cuartos"},
-  "Semifinal - Serie 1": {equipos:["Ganador QF1","Ganador QF2"], juegos:["","",""], ronda:"semifinal"},
-  "Semifinal - Serie 2": {equipos:["Ganador QF3","Ganador QF4"], juegos:["","",""], ronda:"semifinal"},
-  "Final": {equipos:["Ganador SF1","Ganador SF2"], juegos:["","",""], ronda:"final"}
-};
-
-// ---- Renderizado solo lectura ----
 function renderMatch(titulo,data){
-  let wins=[0,0];
-  let rows="";
+  let wins=[0,0], rows="";
   data.juegos.forEach((score,i)=>{
     if(!score) return rows+=`<div class="game-row">Juego ${i+1}: -</div>`;
     const [a,b]=score.split("-").map(x=>parseInt(x,10));
     let note="";
-    if(!isNaN(a) && !isNaN(b)){
+    if(!isNaN(a)&&!isNaN(b)){
       if(a>b){wins[0]++; note=`<span class="note">Gana ${data.equipos[0]}</span>`;}
       else if(b>a){wins[1]++; note=`<span class="note">Gana ${data.equipos[1]}</span>`;}
     }
     rows+=`<div class="game-row">Juego ${i+1}: ${score} ${note}</div>`;
   });
-
   let winner="";
   if(wins[0]>=2) winner=data.equipos[0];
   else if(wins[1]>=2) winner=data.equipos[1];
-
-  // estilo campeón especial si es la final
-  const winnerClass = (data.ronda==="final" && winner) ? "campeon" : "";
-
+  const winnerClass=(data.ronda==="final"&&winner)?"campeon":"";
   return `
     <div class="match ${data.ronda}">
       <div class="header">${titulo}</div>
-      <div class="team ${winner===data.equipos[0]?"win":(winner? "lose":"")} ${winner===data.equipos[0] && winnerClass}">${data.equipos[0]}</div>
-      <div class="team ${winner===data.equipos[1]?"win":(winner? "lose":"")} ${winner===data.equipos[1] && winnerClass}">${data.equipos[1]}</div>
+      <div class="team ${winner===data.equipos[0]?"win":(winner?"lose":"")} ${winner===data.equipos[0]&&winnerClass}">${data.equipos[0]}</div>
+      <div class="team ${winner===data.equipos[1]?"win":(winner?"lose":"")} ${winner===data.equipos[1]&&winnerClass}">${data.equipos[1]}</div>
       <div class="games">${rows}</div>
       <div class="winner-label" style="color:${data.ronda==="final"?"#FFD700":"#D50032"}">
-        ${winner? (data.ronda==="final" ? "🏆 Campeón: "+winner : "Ganador de la serie: "+winner):""}
+        ${winner? (data.ronda==="final"?"🏆 Campeón: "+winner:"Ganador: "+winner):""}
       </div>
     </div>
   `;
@@ -95,4 +78,3 @@ render();
 </script>
 </body>
 </html>
-
