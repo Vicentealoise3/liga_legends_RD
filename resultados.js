@@ -8,4 +8,3 @@ const resultados = {
   "Semifinal - Serie 2": {equipos:["Ganador QF3","Ganador QF4"], juegos:["","",""], ronda:"semifinal"},
   "Final": {equipos:["Ganador SF1","Ganador SF2"], juegos:["","",""], ronda:"final"}
 };
-
