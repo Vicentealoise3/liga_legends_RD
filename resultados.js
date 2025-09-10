@@ -1,6 +1,6 @@
 // 👉 Solo edita aquí los resultados
 const resultados = {
-  "Cuartos - Serie 1": {equipos:["Brewers","Mets"], juegos:["3-2","1-4","5-0"], ronda:"cuartos"},
+  "Cuartos - Serie 1": {equipos:["Brewers","Mets"], juegos:["","",""], ronda:"cuartos"},
   "Cuartos - Serie 2": {equipos:["Tigers","Dodgers"], juegos:["","",""], ronda:"cuartos"},
   "Cuartos - Serie 3": {equipos:["Blue Jays","Mariners"], juegos:["","",""], ronda:"cuartos"},
   "Cuartos - Serie 4": {equipos:["Cubs","Padres"], juegos:["","",""], ronda:"cuartos"},
@@ -8,3 +8,4 @@ const resultados = {
   "Semifinal - Serie 2": {equipos:["Ganador QF3","Ganador QF4"], juegos:["","",""], ronda:"semifinal"},
   "Final": {equipos:["Ganador SF1","Ganador SF2"], juegos:["","",""], ronda:"final"}
 };
+
