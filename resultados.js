@@ -6,8 +6,9 @@ const resultados = {
   "Cuartos - Serie 4": {equipos:["Cubs","Padres"], juegos:["3-1","2-1",""], ronda:"cuartos"},
   "Semifinal - Serie 1": {equipos:["Brewers","Dodgers"], juegos:["4-2","6-1",""], ronda:"semifinal"},
   "Semifinal - Serie 2": {equipos:["Mariners","Cubs"], juegos:["1-11","1-8",""], ronda:"semifinal"},
-  "Final": {equipos:["Ganador SF1","Ganador SF2"], juegos:["","",""], ronda:"final"}
+  "Final": {equipos:["BREWERS","CUBS"], juegos:["","",""], ronda:"final"}
 };
+
 
 
 
